@@ -1,0 +1,26 @@
+body {
+  background-color: $background-color;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+.login-wrapper {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+.login__item {
+  margin: 10px;
+}
+
+.login__btn--login {
+  width: 150px;
+  height: 35px;
+  background-color: green;
+}
