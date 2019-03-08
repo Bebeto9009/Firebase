@@ -1,12 +1,10 @@
 import 'styles.scss';
-import Menu from './Menu.js';
+import Login from './login.js';
 
-export const nav = document.getElementById('nav');
-export const menuTop = nav.offsetTop;
-export const links = document.querySelectorAll('li');
-export const sections = document.querySelectorAll('.section');
+window.addEventListener('load', () => {
+    const loginBtn = new Login(document.getElementById('login__btn--login'));
+    // const emailInput = new Login(document.getElementById('email__field'));
+    // const passInput = new Login(document.getElementById('password__field'));
 
-window.addEventListener('scroll', () => {
-    const menu = new Menu;
-    menu.init();
-}, false,)
+    loginBtn.init();
+}, false);
