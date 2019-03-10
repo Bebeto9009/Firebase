@@ -28,7 +28,11 @@ class Login {
 
     logout() {
         console.log('logout firebase')
-            firebase.auth().signOut();
+            firebase.auth().signOut().then(function() {
+                // sign-out succ.
+            }).catch(function(error) {
+                // an error
+            });
     }
 
     getData() {
