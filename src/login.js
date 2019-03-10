@@ -3,8 +3,20 @@ class Login {
         this.loginBtn = btnLogin;
     }
 
+    auth() {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                window.location = 'home.html';
+            } else {
+                // No user is signed in.
+                console.log('user niezalogowany');
+            }
+        });
+    }
+
     login(userEmail, userPass) {
-        firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -22,10 +34,9 @@ class Login {
 
     init() {
         this.loginBtn.addEventListener('click', ()=>{
-            // alert('hey')
-            // this.login();
             this.getData(); // odpalamy metodę która pobierze wartości z logina i hasła
         })
+        this.auth();
     }
 }
 
