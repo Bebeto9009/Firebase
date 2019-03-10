@@ -8,8 +8,9 @@
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq06l5RUVfib62IYRQacLc-KAy0XIWAVs"></script>-->
 </head>
 <body>
-<section class="main">
-<p>Witaj, jesteś zalogowany</p>
+<section class="welcome">
+<p>Witaj, jesteś zalogowany/a</p>
+    <button id='logout__btn'>Wyloguj</button>
 </section>
 
 </body>
@@ -17,15 +18,26 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
 <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAOvUWmlaXlz6lnU-TgmFMBz9_SGsRL_3o",
-        authDomain: "fir-applogin-8a6f0.firebaseapp.com",
-        databaseURL: "https://fir-applogin-8a6f0.firebaseio.com",
-        projectId: "fir-applogin-8a6f0",
-        storageBucket: "fir-applogin-8a6f0.appspot.com",
-        messagingSenderId: "963013239195"
-    };
-    firebase.initializeApp(config);
+
+    // var admin = require('firebase-admin');
+    //
+    // var serviceAccount = require('./ServiceAccountKey.json');
+    //
+    // admin.initializeApp({
+    //     credential: admin.credential.cert(serviceAccount),
+    //     // databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+    // });
+
+    // const uid = 'some-uid';
+    // const additionalClaims = {
+    //     premiumAccount: true
+    // }
+    // admin.auth().createCustomToken(uid)
+    // .then((customToken) => {
+    //     console.log(customToken);
+    // })
+    // .catch((error) => {
+    //     console.log('Error creating custom token:', error)
+    // })
 </script>
 </html>

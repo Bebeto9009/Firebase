@@ -26,6 +26,11 @@ class Login {
         });
     }
 
+    logout() {
+        console.log('logout firebase')
+            firebase.auth().signOut();
+    }
+
     getData() {
         let userEmail = document.getElementById('email__field').value; // pobranie wartości pola login
         let userPass = document.getElementById('password__field').value; // pobranie wartości pola hasła
@@ -35,7 +40,7 @@ class Login {
     init() {
         this.loginBtn.addEventListener('click', ()=>{
             this.getData(); // odpalamy metodę która pobierze wartości z logina i hasła
-        })
+        });
         this.auth();
     }
 }
