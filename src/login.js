@@ -9,7 +9,6 @@ class Login {
                 user.getIdToken().then((idToken) => {
                     window.localStorage.setItem('user', idToken);
                     window.location = 'home.html';
-                    resolve(idToken);
                 }, (error) => {
                     resolve(null);
                 });
@@ -33,6 +32,7 @@ class Login {
     logout() {
         console.log('logout firebase')
             firebase.auth().signOut().then(function() {
+                localStorage.removeItem('user', idToken);
                 // sign-out succ.
             }).catch(function(error) {
                 // an error
@@ -45,11 +45,21 @@ class Login {
         this.login(userEmail, userPass);
     }
 
-    init() {
+    events() {
         this.loginBtn.addEventListener('click', ()=>{
             this.getData(); // odpalamy metodę która pobierze wartości z logina i hasła
         });
         this.auth();
+    }
+
+    init() {
+        if (this.loginBtn) {
+            try {
+                this.events();
+            } catch (e) {
+                console.warn(e);
+            }
+        }
     }
 }
 
