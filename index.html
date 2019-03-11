@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/48938155eb24b4ccdde09426066869504c6dab3c/dist/css/bootstrap.min.css">
-    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq06l5RUVfib62IYRQacLc-KAy0XIWAVs"></script>-->
 </head>
 <body>
 <section class="login">
@@ -17,60 +16,7 @@
 </section>
 
 </body>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
 <script src="/build/bundle.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAOvUWmlaXlz6lnU-TgmFMBz9_SGsRL_3o",
-        authDomain: "fir-applogin-8a6f0.firebaseapp.com",
-        databaseURL: "https://fir-applogin-8a6f0.firebaseio.com",
-        projectId: "fir-applogin-8a6f0",
-        storageBucket: "fir-applogin-8a6f0.appspot.com",
-        messagingSenderId: "963013239195"
-    };
-    firebase.initializeApp(config);
-
-    var admin = require('firebase-admin');
-
-    var serviceAccount = require('./ServiceAccountKey.json');
-
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        // databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
-    });
-
-    const uid = 'some-uid';
-
-    admin.auth().createCustomToken(uid)
-        .then((customToken) => {
-            console.log('customToken', customToken);
-        })
-        .catch((error) => {
-            console.log('Error creating custom token:', error)
-        })
-
-    firebase.auth().signInWithCustomToken(token).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-    });
-
-    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        // Send token to your backend via HTTPS
-        // ...
-    }).catch(function(error) {
-        // Handle error
-    });
-
-    firebase.auth().currentUser.getIdToken()
-        .then((idToken) => {
-            // idToken can be passed back to server.
-        })
-        .catch((error) => {
-            // Error occurred.
-        });
-</script>
 </html>

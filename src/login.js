@@ -3,39 +3,17 @@ class Login {
         this.loginBtn = btnLogin;
     }
 
-    auth() {
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                user.getIdToken().then((idToken) => {
-                    window.localStorage.setItem('user', idToken);
-                    window.location = 'home.html';
-                }, (error) => {
-                    resolve(null);
-                });
-            } else {
-                resolve(null);
-            }
-        });
-    }
-
     login(userEmail, userPass) {
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
+            .then(function(success) {
+                window.location = '/home.html';
+            })
+            .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
 
-            window.alert('Error : ' + errorMessage);
-            // ...
-        });
-    }
-
-    logout() {
-        console.log('logout firebase')
-            firebase.auth().signOut().then(function() {
-                localStorage.removeItem('user', idToken);
-                // sign-out succ.
-            }).catch(function(error) {
-                // an error
+                window.alert('Error : ' + errorMessage);
             });
     }
 
@@ -49,7 +27,6 @@ class Login {
         this.loginBtn.addEventListener('click', ()=>{
             this.getData(); // odpalamy metodę która pobierze wartości z logina i hasła
         });
-        this.auth();
     }
 
     init() {
