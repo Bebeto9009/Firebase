@@ -45,10 +45,24 @@
 
     admin.auth().createCustomToken(uid)
         .then((customToken) => {
-            console.log(customToken);
+            console.log('customToken', customToken);
         })
         .catch((error) => {
             console.log('Error creating custom token:', error)
         })
+
+    firebase.auth().signInWithCustomToken(token).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+    });
+
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        // Send token to your backend via HTTPS
+        // ...
+    }).catch(function(error) {
+        // Handle error
+    });
 </script>
 </html>
