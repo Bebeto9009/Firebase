@@ -64,5 +64,13 @@
     }).catch(function(error) {
         // Handle error
     });
+
+    firebase.auth().currentUser.getIdToken()
+        .then((idToken) => {
+            // idToken can be passed back to server.
+        })
+        .catch((error) => {
+            // Error occurred.
+        });
 </script>
 </html>

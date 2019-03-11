@@ -6,11 +6,15 @@ class Login {
     auth() {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                // User is signed in.
-                window.location = 'home.html';
+                user.getIdToken().then((idToken) => {
+                    window.localStorage.setItem('user', idToken);
+                    window.location = 'home.html';
+                    resolve(idToken);
+                }, (error) => {
+                    resolve(null);
+                });
             } else {
-                // No user is signed in.
-                console.log('user niezalogowany');
+                resolve(null);
             }
         });
     }
